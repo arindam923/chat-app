@@ -29,7 +29,7 @@ const ChatMessageComponent = (props: ChatMessage) => {
         <h3 className="text-sm font-semibold">{props.name}</h3>
         <p className="text-xs truncate max-w-[160px]">{props.last_msg}</p>
       </div>
-      <div className="text-xs flex flex-col items-center">
+      <div className="text-xs flex flex-col items-end">
         <p className="text-xs text-gray-600">{props.time}</p>
         <div className="h-4 w-4 text-xs text-white bg-red-500 grid place-items-center rounded-full">
           <p>{props.msg_count}</p>
@@ -45,24 +45,21 @@ const MessageSection = () => {
       name: "John Doe",
       avatar: "https://i.pravatar.cc/150?img=14",
       last_msg: "Hi there! How are you doing?",
-      time: "10:30 AM",
+      time: "2 mins ago",
       msg_count: 5,
       isOnline: true,
     },
     {
       name: "Jane Smith",
-
       avatar: "https://i.pravatar.cc/150?img=12",
       last_msg: "I'll get back to you soon.",
-      time: "2:45 PM",
+      time: "3 day ago",
       msg_count: 2,
       isOnline: false,
     },
     {
       name: "Michael Johnson",
-
-      avatar: "https://i.pravatar.cc/150?img=11",
-
+      avatar: "https://i.pravatar.cc/150?img=50",
       last_msg: "Did you finish the project?",
       time: "11:15 AM",
       msg_count: 8,
@@ -70,8 +67,7 @@ const MessageSection = () => {
     },
     {
       name: "Emily Davis",
-
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=44",
       last_msg: "Sounds good! Let's meet tomorrow.",
       time: "4:20 PM",
       msg_count: 3,
@@ -79,9 +75,7 @@ const MessageSection = () => {
     },
     {
       name: "David Wilson",
-
-      avatar: "https://i.pravatar.cc/150?img=11",
-
+      avatar: "https://i.pravatar.cc/150?img=40",
       last_msg: "I'll send you the details shortly.",
       time: "9:00 AM",
       msg_count: 6,
@@ -89,7 +83,7 @@ const MessageSection = () => {
     },
     {
       name: "Sarah Thompson",
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=42",
       last_msg: "Have you reviewed the proposal?",
       time: "1:30 PM",
       msg_count: 4,
@@ -98,7 +92,7 @@ const MessageSection = () => {
     {
       name: "Robert Anderson",
 
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=22",
       last_msg: "Thanks for your help!",
       time: "3:15 PM",
       msg_count: 2,
@@ -107,7 +101,7 @@ const MessageSection = () => {
     {
       name: "Jessica Taylor",
 
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=32",
       last_msg: "I'll be there in 10 minutes.",
       time: "11:45 AM",
       msg_count: 7,
@@ -115,19 +109,17 @@ const MessageSection = () => {
     },
     {
       name: "Christopher Brown",
-
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=19",
       last_msg: "Let's discuss this further tomorrow.",
-      time: "5:30 PM",
+      time: "10 mins ago",
       msg_count: 3,
       isOnline: true,
     },
     {
       name: "Ashley Martinez",
-
-      avatar: "https://i.pravatar.cc/150?img=11",
+      avatar: "https://i.pravatar.cc/150?img=31",
       last_msg: "Did you receive my email?",
-      time: "10:00 AM",
+      time: "4 hours ago",
       msg_count: 4,
       isOnline: false,
     },
@@ -145,19 +137,29 @@ const MessageSection = () => {
       />
 
       <div className="mt-5">
-        <p className="font-semibold mb-2 tracking-wide text-sm uppercase">
+        <p className="font-semibold text-slate-600 mb-2 tracking-wide text-sm uppercase">
           Pinned
         </p>
-        {fakeChatMessages.map((item, index) => (
+        {fakeChatMessages.splice(8).map((item, index) => (
           <ChatMessageComponent key={index} {...item} />
         ))}
       </div>
       <div>
-        <p>Direct Messages</p>
+        <p className="font-semibold text-slate-600 mb-2 tracking-wide text-sm uppercase">
+          Direct Messages
+        </p>
+        {fakeChatMessages.splice(4, 8).map((item, index) => (
+          <ChatMessageComponent key={index} {...item} />
+        ))}
       </div>
 
       <div>
-        <p>Group Messages</p>
+        <p className="font-semibold text-slate-600 mb-2 tracking-wide text-sm uppercase">
+          Group Messages
+        </p>
+        {fakeChatMessages.splice(1, 3).map((item, index) => (
+          <ChatMessageComponent key={index} {...item} />
+        ))}
       </div>
     </div>
   );
